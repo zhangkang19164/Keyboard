@@ -8,12 +8,10 @@ import android.support.v7.app.AppCompatDialog;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 
 import com.example.keyboard.BaseKeyboardActivity;
-import com.example.keyboard.keybaord.OnKeyboardSwitchListener;
 
 /**
  * Created on 2018/8/16
@@ -23,7 +21,7 @@ import com.example.keyboard.keybaord.OnKeyboardSwitchListener;
  * @author Android-张康
  * update 2018/8/16
  */
-public class KeyboardDialog extends AppCompatDialog implements BaseKeyboardActivity.OnActivityCallback,OnKeyboardSwitchListener {
+public class KeyboardDialog extends AppCompatDialog implements BaseKeyboardActivity.OnActivityCallback {
     private KeyboardDialogDelegate mKeyboardDialogDelegate;
     private final KeyEvent.Callback mKeyEventCallback;
 
@@ -149,13 +147,4 @@ public class KeyboardDialog extends AppCompatDialog implements BaseKeyboardActiv
         getKeyboardDialogDelegate().onDestroy();
     }
 
-    @Override
-    public void switchToNumber() {
-
-    }
-
-    @Override
-    public void switchToEnglish() {
-
-    }
 }

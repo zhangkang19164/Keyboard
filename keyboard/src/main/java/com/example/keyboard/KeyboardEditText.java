@@ -64,4 +64,12 @@ public class KeyboardEditText extends AppCompatEditText {
         super.onDetachedFromWindow();
         mKeyboardDelegate.onDetachedFromWindow();
     }
+
+    public void showKeyboard() {
+        mKeyboardDelegate.showKeyboard();
+    }
+
+    public void hideKeyboard() {
+        mKeyboardDelegate.hideKeyboard();
+    }
 }

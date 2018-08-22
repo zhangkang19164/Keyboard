@@ -77,8 +77,8 @@
             android:horizontalGap="0.8%p"
             android:isModifier="true"
             android:isSticky="true"
-            android:keyIcon="@drawable/common_icon_click_keyboard_capital_close"
             android:keyEdgeFlags="left"
+            android:keyIcon="@drawable/ic_keyboard_capslock_d5dfe6_24dp"
             android:keyWidth="11.2%p" />
         <Key
             android:codes="122"
@@ -107,7 +107,7 @@
             android:horizontalGap="3.8%p"
             android:isRepeatable="true"
             android:keyEdgeFlags="right"
-            android:keyIcon="@drawable/common_icon_click_keyboard_delete"
+            android:keyIcon="@drawable/ic_backspace_black_24dp"
             android:keyWidth="11.2%p" />
     </Row>
     <Row android:rowEdgeFlags="bottom">
@@ -119,16 +119,16 @@
         <Key
             android:codes="-8"
             android:horizontalGap="1.6%p"
-            android:keyIcon="@drawable/common_icon_click_keyboard_down"
+            android:keyIcon="@drawable/ic_keyboard_hide_black_24dp"
             android:keyWidth="10.933%p" />
         <Key
             android:codes="32"
-            android:keyLabel="空格"
+            android:keyIcon="@drawable/ic_space_bar_black_24dp"
             android:keyWidth="48.533%p" />
         <Key
             android:codes="-4"
             android:keyEdgeFlags="right"
-            android:keyLabel="确定"
+            android:keyIcon="@drawable/ic_keyboard_return_black_24dp"
             android:keyWidth="23.466%p" />
     </Row>
 </Keyboard>

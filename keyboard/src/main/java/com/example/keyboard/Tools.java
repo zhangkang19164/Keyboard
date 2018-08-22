@@ -14,7 +14,7 @@ import android.widget.EditText;
  */
 public class Tools {
     /**
-     * 隐藏键盘
+     * 隐藏系统键盘键盘
      *
      * @param editText 需要操作的输入框
      */
@@ -26,7 +26,7 @@ public class Tools {
     }
 
     /**
-     * 显示键盘
+     * 显示系统键盘
      *
      * @param editText 需要操作的输入框
      */

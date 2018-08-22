@@ -17,8 +17,8 @@
             android:keyLabel="3" />
         <Key
             android:codes="-5"
-            android:keyIcon="@drawable/common_icon_click_keyboard_delete"
-            android:isRepeatable="true"/>
+            android:isRepeatable="true"
+            android:keyIcon="@drawable/ic_backspace_black_24dp" />
     </Row>
 
     <Row>
@@ -33,7 +33,7 @@
             android:keyLabel="6" />
         <Key
             android:codes="-7"
-            android:keyLabel="清除" />
+            android:keyIcon="@drawable/ic_clear_all_black_24dp" />
     </Row>
 
     <Row>
@@ -48,7 +48,7 @@
             android:keyLabel="9" />
         <Key
             android:codes="-8"
-            android:keyLabel="隐藏" />
+            android:keyIcon="@drawable/ic_keyboard_hide_black_24dp" />
     </Row>
 
     <Row>
@@ -64,7 +64,7 @@
             android:keyLabel="" />
         <Key
             android:codes="-4"
-            android:keyLabel="确定" />
+            android:keyIcon="@drawable/ic_keyboard_return_black_24dp" />
     </Row>
 
 </Keyboard>

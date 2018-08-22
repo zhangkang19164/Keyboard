@@ -90,7 +90,8 @@ public class KeyboardDelegate {
         }
     }
 
-    protected void showKeyboard() {
+
+    public void showKeyboard() {
         if (mShowSystemSoftInput) {
             hideKeyboard();
             return;
@@ -102,7 +103,7 @@ public class KeyboardDelegate {
         mKeyboardDialog.show();
     }
 
-    protected void hideKeyboard() {
+    public void hideKeyboard() {
         if (null != mKeyboardDialog && mKeyboardDialog.isShowing()) {
             mKeyboardDialog.dismiss();
         }

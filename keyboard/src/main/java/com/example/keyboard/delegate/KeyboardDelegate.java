@@ -78,6 +78,18 @@ public class KeyboardDelegate {
         return false;
     }
 
+    public void onFocusChanged(boolean focused) {
+        if (focused) {
+            if (null != mKeyboardDialog) {
+                mKeyboardDialog.focusIn(mEditText);
+            }
+        } else {
+            if (null != mKeyboardDialog) {
+                mKeyboardDialog.focusOut(mEditText);
+            }
+        }
+    }
+
     public void setEnabled(boolean enabled) {
         if (!enabled) {
             hideKeyboard();

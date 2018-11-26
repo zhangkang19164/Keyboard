@@ -23,10 +23,10 @@ public class BaseKeyboardActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         if (null != mOnActivityCallback) {
             mOnActivityCallback.onDestroy();
         }
+        super.onDestroy();
     }
 
     @Override

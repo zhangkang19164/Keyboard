@@ -1,6 +1,7 @@
 package com.example.keyboard;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
@@ -51,6 +52,12 @@ public class KeyboardEditText extends AppCompatEditText {
         boolean onKeyUp = super.onKeyUp(keyCode, event);
         mKeyboardDelegate.onKeyUp(keyCode, event);
         return onKeyUp;
+    }
+
+    @Override
+    protected void onFocusChanged(boolean focused, int direction, Rect previouslyFocusedRect) {
+        super.onFocusChanged(focused, direction, previouslyFocusedRect);
+        mKeyboardDelegate.onFocusChanged(focused);
     }
 
     @Override

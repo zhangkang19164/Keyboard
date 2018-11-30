@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.widget.EditText;
 
-import com.example.keyboard.BaseKeyboardActivity;
-
 /**
  * Created on 2018/8/22
  * Title:
@@ -42,11 +40,7 @@ public class KeyboardDialogFactory {
 
     private static KeyboardDialog create(Context context) {
         KeyboardDialog keyboardDialog = new KeyboardDialog(context);
-        if (context instanceof BaseKeyboardActivity) {
-            ((BaseKeyboardActivity) context).setOnActivityCallback(keyboardDialog);
-        }
         return keyboardDialog;
     }
-
 
 }

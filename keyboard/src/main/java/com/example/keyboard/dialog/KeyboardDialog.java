@@ -11,8 +11,6 @@ import android.view.MotionEvent;
 import android.view.WindowManager;
 import android.widget.EditText;
 
-import com.example.keyboard.BaseKeyboardActivity;
-
 /**
  * Created on 2018/8/16
  * Title:
@@ -21,7 +19,7 @@ import com.example.keyboard.BaseKeyboardActivity;
  * @author Android-张康
  * update 2018/8/16
  */
-public class KeyboardDialog extends AppCompatDialog implements BaseKeyboardActivity.OnActivityCallback {
+public class KeyboardDialog extends AppCompatDialog {
     private KeyboardDialogDelegate mKeyboardDialogDelegate;
     private final KeyEvent.Callback mKeyEventCallback;
 
@@ -137,14 +135,5 @@ public class KeyboardDialog extends AppCompatDialog implements BaseKeyboardActiv
         return mKeyboardDialogDelegate;
     }
 
-    @Override
-    public boolean onActivityBackPressed() {
-        return getKeyboardDialogDelegate().onActivityBackPressed();
-    }
-
-    @Override
-    public void onDestroy() {
-        getKeyboardDialogDelegate().onDestroy();
-    }
 
 }

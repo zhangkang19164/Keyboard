@@ -16,7 +16,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.EditText;
 
-import com.example.keyboard.BaseKeyboardActivity;
 import com.example.keyboard.R;
 import com.example.keyboard.keybaord.KeyboardFactory;
 import com.example.keyboard.keybaord.KeyboardKeys;
@@ -32,7 +31,7 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
  * @author Android-张康
  * update 2018/8/22
  */
-public class KeyboardDialogDelegate implements BaseKeyboardActivity.OnActivityCallback, KeyboardView.OnKeyboardActionListener {
+public class KeyboardDialogDelegate implements KeyboardView.OnKeyboardActionListener {
     private final Rect mBounds = new Rect();
     private LayoutInflater mInflater;
     private KeyboardDialog mKeyboardDialog;
@@ -50,19 +49,6 @@ public class KeyboardDialogDelegate implements BaseKeyboardActivity.OnActivityCa
         mKeyboardDialog = keyboardDialog;
     }
 
-    @Override
-    public boolean onActivityBackPressed() {
-        if (mKeyboardDialog.isShowing()) {
-            mKeyboardDialog.dismiss();
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public void onDestroy() {
-        KeyboardDialogFactory.onDestroy();
-    }
 
     @Override
     public void onPress(int primaryCode) {

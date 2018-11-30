@@ -58,6 +58,11 @@ public class KeyboardDelegate {
         }
     }
 
+    public void setInputType(int type) {
+        showKeyboard();
+    }
+
+
     public boolean onTouchEvent(MotionEvent event) {
         boolean isShowKeyboard = event.getAction() == MotionEvent.ACTION_UP && mEditText.isFocused();
         isShowKeyboard = isShowKeyboard && (mEditText.isTextSelectable() || mEditText.onCheckIsTextEditor() && mEditText.isEnabled());
@@ -67,7 +72,13 @@ public class KeyboardDelegate {
         return false;
     }
 
+
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+        //如果点击的是返回键，且当前键盘是显示状态，关闭键盘并消耗改点击事件
+        if (keyCode == KeyEvent.KEYCODE_BACK && isShowing()) {
+            hideKeyboard();
+            return true;
+        }
         return false;
     }
 
@@ -124,4 +135,6 @@ public class KeyboardDelegate {
     public boolean isShowing() {
         return null != mKeyboardDialog && mKeyboardDialog.isShowing();
     }
+
+
 }

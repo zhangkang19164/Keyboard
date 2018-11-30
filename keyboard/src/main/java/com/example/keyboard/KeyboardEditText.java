@@ -34,24 +34,33 @@ public class KeyboardEditText extends AppCompatEditText {
     }
 
     @Override
+    public void setInputType(int type) {
+        super.setInputType(type);
+        mKeyboardDelegate.setInputType(type);
+    }
+
+    @Override
     public boolean onTouchEvent(MotionEvent event) {
-        boolean onTouchEvent = super.onTouchEvent(event);
-        mKeyboardDelegate.onTouchEvent(event);
-        return onTouchEvent;
+        if (mKeyboardDelegate.onTouchEvent(event)) {
+            return true;
+        }
+        return super.onTouchEvent(event);
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        boolean onKeyDown = super.onKeyDown(keyCode, event);
-        mKeyboardDelegate.onKeyDown(keyCode, event);
-        return onKeyDown;
+        if (mKeyboardDelegate.onKeyDown(keyCode, event)) {
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-        boolean onKeyUp = super.onKeyUp(keyCode, event);
-        mKeyboardDelegate.onKeyUp(keyCode, event);
-        return onKeyUp;
+        if (mKeyboardDelegate.onKeyUp(keyCode, event)) {
+            return true;
+        }
+        return super.onKeyUp(keyCode, event);
     }
 
     @Override

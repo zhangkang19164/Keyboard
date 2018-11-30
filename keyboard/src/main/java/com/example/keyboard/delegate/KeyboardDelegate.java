@@ -6,6 +6,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.widget.EditText;
 
+import com.example.keyboard.KeyboardTools;
 import com.example.keyboard.dialog.KeyboardDialog;
 import com.example.keyboard.dialog.KeyboardDialogFactory;
 
@@ -64,12 +65,10 @@ public class KeyboardDelegate {
 
 
     public boolean onTouchEvent(MotionEvent event) {
-        boolean isShowKeyboard = event.getAction() == MotionEvent.ACTION_UP && mEditText.isFocused();
-        isShowKeyboard = isShowKeyboard && (mEditText.isTextSelectable() || mEditText.onCheckIsTextEditor() && mEditText.isEnabled());
-        if (isShowKeyboard) {
-            showKeyboard();
+        if (event.getAction() != MotionEvent.ACTION_UP) {
+            return false;
         }
-        return false;
+        return showKeyboard();
     }
 
 
@@ -91,13 +90,11 @@ public class KeyboardDelegate {
 
     public void onFocusChanged(boolean focused) {
         if (focused) {
-            if (null != mKeyboardDialog) {
-                mKeyboardDialog.focusIn(mEditText);
-            }
+            getKeyboardDialog().focusIn(mEditText);
+            showKeyboard();
         } else {
-            if (null != mKeyboardDialog) {
-                mKeyboardDialog.focusOut(mEditText);
-            }
+            getKeyboardDialog().focusOut(mEditText);
+            hideKeyboard();
         }
     }
 
@@ -114,16 +111,19 @@ public class KeyboardDelegate {
     }
 
 
-    public void showKeyboard() {
+    public boolean showKeyboard() {
         if (mShowSystemSoftInput) {
             hideKeyboard();
-            return;
+            return false;
         }
-        if (null == mKeyboardDialog) {
-            mKeyboardDialog = KeyboardDialogFactory.create(mEditText);
+        boolean isShowKeyboard = mEditText.isFocused() && (mEditText.isTextSelectable() || mEditText.onCheckIsTextEditor() && mEditText.isEnabled());
+        if (isShowKeyboard) {
+            KeyboardTools.hideSoftInputFromWindow(mEditText);
+            getKeyboardDialog();
+            mKeyboardDialog.focusIn(mEditText);
+            mKeyboardDialog.show();
         }
-        mKeyboardDialog.focusIn(mEditText);
-        mKeyboardDialog.show();
+        return isShowKeyboard;
     }
 
     public void hideKeyboard() {
@@ -136,5 +136,10 @@ public class KeyboardDelegate {
         return null != mKeyboardDialog && mKeyboardDialog.isShowing();
     }
 
-
+    public KeyboardDialog getKeyboardDialog() {
+        if (null == mKeyboardDialog && null != mEditText) {
+            mKeyboardDialog = KeyboardDialogFactory.create(mEditText);
+        }
+        return mKeyboardDialog;
+    }
 }

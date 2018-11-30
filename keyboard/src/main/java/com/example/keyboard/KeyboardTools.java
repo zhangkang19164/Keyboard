@@ -12,7 +12,7 @@ import android.widget.EditText;
  * @author Android-张康
  * update 2018/8/16
  */
-public class Tools {
+public class KeyboardTools {
     /**
      * 隐藏系统键盘键盘
      *

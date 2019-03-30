@@ -7,9 +7,9 @@
     tools:context=".MainKeyboardActivity">
 
     <EditText
+        android:id="@+id/sys_edit"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#F1F1F1"
         android:hint="系统默认键盘"
         android:paddingLeft="15dp"
         android:paddingRight="15dp" />
@@ -18,7 +18,6 @@
     <com.example.keyboard.KeyboardEditText
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#F1F1F1"
         android:hint="纯数字键盘"
         android:inputType="number"
         android:paddingLeft="15dp"
@@ -27,7 +26,6 @@
     <com.example.keyboard.KeyboardEditText
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#F1F1F1"
         android:hint="默认键盘"
         android:paddingLeft="15dp"
         android:paddingRight="15dp" />
@@ -35,7 +33,6 @@
     <com.example.keyboard.KeyboardEditText
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#F1F1F1"
         android:hint="小数点键盘"
         android:inputType="numberDecimal"
         android:paddingLeft="15dp"

@@ -7,3 +7,10 @@
 /captures
 .externalNativeBuild
 
+build/intermediates/lint-cache/api-versions-15-28.0.2.bin
+build/intermediates/lint-cache/maven.google/com/android/support/group-index.xml
+build/intermediates/lint-cache/maven.google/com/android/support/test/group-index.xml
+build/intermediates/lint-cache/typos-en.txt-2.bin
+build/intermediates/lint-cache/sdk-registry.xml/sdk-registry.xml
+build/intermediates/lint-cache/maven.google/master-index.xml
+build/intermediates/lint-cache/maven.google/com/android/support/test/espresso/group-index.xml

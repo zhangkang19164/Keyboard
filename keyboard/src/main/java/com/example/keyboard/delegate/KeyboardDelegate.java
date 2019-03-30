@@ -116,6 +116,10 @@ public class KeyboardDelegate {
             hideKeyboard();
             return false;
         }
+        //如果当前弹框已经展示，不消费该事件
+        if (isShowing()) {
+            return false;
+        }
         boolean isShowKeyboard = mEditText.isFocused() && (mEditText.isTextSelectable() || mEditText.onCheckIsTextEditor() && mEditText.isEnabled());
         if (isShowKeyboard) {
             KeyboardTools.hideSoftInputFromWindow(mEditText);

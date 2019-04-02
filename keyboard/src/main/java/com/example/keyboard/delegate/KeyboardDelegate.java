@@ -122,6 +122,7 @@ public class KeyboardDelegate {
         }
         boolean isShowKeyboard = mEditText.isFocused() && (mEditText.isTextSelectable() || mEditText.onCheckIsTextEditor() && mEditText.isEnabled());
         if (isShowKeyboard) {
+            //隐藏系统的键盘，这种情况是系统键盘和自定义键盘混用的情况下
             KeyboardTools.hideSoftInputFromWindow(mEditText);
             getKeyboardDialog();
             mKeyboardDialog.focusIn(mEditText);

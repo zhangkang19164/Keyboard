@@ -41,10 +41,10 @@ public class KeyboardEditText extends AppCompatEditText {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (mKeyboardDelegate.onTouchEvent(event)) {
-            return true;
-        }
-        return super.onTouchEvent(event);
+        boolean onTouchEvent = super.onTouchEvent(event);
+        //不消费系统的触摸事件，仅对触摸事件做自己的处理
+        mKeyboardDelegate.onTouchEvent(event);
+        return onTouchEvent;
     }
 
     @Override

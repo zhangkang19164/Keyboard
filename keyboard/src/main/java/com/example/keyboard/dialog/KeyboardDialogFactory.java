@@ -15,6 +15,11 @@ import android.widget.EditText;
 public class KeyboardDialogFactory {
     private static KeyboardDialog sKeyboardDialog;
 
+    /**
+     * 创建弹框 会根据不同的
+     * @param editText 输入框
+     * @return
+     */
     public static KeyboardDialog create(EditText editText) {
         if (null == sKeyboardDialog) {
             sKeyboardDialog = create(editText.getContext());

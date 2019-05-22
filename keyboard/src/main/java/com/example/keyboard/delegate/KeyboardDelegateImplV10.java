@@ -3,6 +3,8 @@ package com.example.keyboard.delegate;
 import android.util.AttributeSet;
 import android.widget.EditText;
 
+import com.example.keyboard.KeyboardEditText;
+
 /**
  * Created on 2018/8/17
  * Title: 系统版本大于等于10时会使用该类
@@ -14,7 +16,7 @@ import android.widget.EditText;
 public class KeyboardDelegateImplV10 extends KeyboardDelegate {
 
 
-    public KeyboardDelegateImplV10(EditText editText, AttributeSet attrs) {
+    public KeyboardDelegateImplV10(KeyboardEditText editText, AttributeSet attrs) {
         super(editText, attrs);
     }
 }

@@ -9,7 +9,8 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.WindowManager;
-import android.widget.EditText;
+
+import com.example.keyboard.KeyboardEditText;
 
 /**
  * Created on 2018/8/16
@@ -105,11 +106,11 @@ public class KeyboardDialog extends AppCompatDialog {
     }
 
 
-    public void focusIn(@NonNull EditText editText) {
+    public void focusIn(@NonNull KeyboardEditText editText) {
         getKeyboardDialogDelegate().focusIn(editText);
     }
 
-    public void focusOut(@NonNull EditText editText) {
+    public void focusOut(@NonNull KeyboardEditText editText) {
         getKeyboardDialogDelegate().focusOut(editText);
     }
 

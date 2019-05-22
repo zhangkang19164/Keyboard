@@ -5,6 +5,8 @@ import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.widget.EditText;
 
+import com.example.keyboard.KeyboardEditText;
+
 /**
  * Created on 2018/8/17
  * Title:系统版本大于等于21时会使用该类
@@ -16,7 +18,7 @@ import android.widget.EditText;
 public class KeyboardDelegateImplV21 extends KeyboardDelegate {
 
 
-    public KeyboardDelegateImplV21(EditText editText, AttributeSet attrs) {
+    KeyboardDelegateImplV21(KeyboardEditText editText, AttributeSet attrs) {
         super(editText, attrs);
     }
 

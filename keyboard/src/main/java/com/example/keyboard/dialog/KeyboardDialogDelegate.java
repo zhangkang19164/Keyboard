@@ -7,14 +7,16 @@ import android.inputmethodservice.KeyboardView;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.Editable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.EditText;
 
+import com.example.keyboard.KeyboardEditText;
+import com.example.keyboard.KeyboardTools;
 import com.example.keyboard.R;
 import com.example.keyboard.keybaord.KeyboardFactory;
 import com.example.keyboard.keybaord.KeyboardKeys;
@@ -38,7 +40,7 @@ public class KeyboardDialogDelegate implements KeyboardView.OnKeyboardActionList
     private KeyboardView mEnglishKeyboardView;
     private String mLastEnglishKeyboardType;
     private String mLastKeyboardType;
-    private EditText mEditText;
+    private KeyboardEditText mEditText;
 
     public static KeyboardDialogDelegate create(KeyboardDialog keyboardDialog) {
         return new KeyboardDialogDelegate(keyboardDialog);
@@ -80,7 +82,10 @@ public class KeyboardDialogDelegate implements KeyboardView.OnKeyboardActionList
                 mEditText.getEditableText().delete(selectionStart, selectionEnd);
                 break;
             case KeyboardKeys.KEYCODE_CLEAR:
-                mEditText.getText().clear();
+                Editable mEditTextText = mEditText.getText();
+                if (null != mEditTextText) {
+                    mEditTextText.clear();
+                }
                 break;
             case KeyboardKeys.KEYCODE_HIDE:
                 mKeyboardDialog.dismiss();
@@ -104,6 +109,9 @@ public class KeyboardDialogDelegate implements KeyboardView.OnKeyboardActionList
                     keyboardType = mLastEnglishKeyboardType;
                 }
                 setKeyboard(keyboardType);
+                break;
+            case KeyboardKeys.KEYCODE_SWITCH_TO_SYSTEM:
+                switchToSystemKeyboard();
                 break;
             default:
                 if (isNumber(primaryCode)) {
@@ -150,15 +158,15 @@ public class KeyboardDialogDelegate implements KeyboardView.OnKeyboardActionList
         return false;
     }
 
-    public void focusIn(@NonNull EditText editText) {
+    public void focusIn(@NonNull KeyboardEditText editText) {
         if (null != mEditText && mEditText == editText) {
             return;
         }
         mEditText = editText;
-        setKeyboard(KeyboardFactory.getKeyboardType(mEditText.getInputType()));
+        setKeyboard(KeyboardFactory.getKeyboardType(mEditText));
     }
 
-    public void focusOut(@NonNull EditText editText) {
+    public void focusOut(@NonNull KeyboardEditText editText) {
         if (mEditText == editText) {
             mEditText = null;
         }
@@ -239,7 +247,8 @@ public class KeyboardDialogDelegate implements KeyboardView.OnKeyboardActionList
     private boolean isNumberKeyboard(String keyboardType) {
         return KeyboardKeys.KEYBOARD_NUMBER.equals(keyboardType) ||
                 KeyboardKeys.KEYBOARD_NUMBER_ALL.equals(keyboardType) ||
-                KeyboardKeys.KEYBOARD_NUMBER_DECIMAL.equals(keyboardType);
+                KeyboardKeys.KEYBOARD_NUMBER_DECIMAL.equals(keyboardType) ||
+                KeyboardKeys.KEYBOARD_SWITCH_TO_SYSTEM.equals(keyboardType);
     }
 
     private boolean isEnglishKeyboard(String keyboardType) {
@@ -267,6 +276,20 @@ public class KeyboardDialogDelegate implements KeyboardView.OnKeyboardActionList
     private boolean isEnglishAlphabet(int primaryCode) {
         //32代表空格，65-90代表A-Z，97-122代表a-z
         return primaryCode == 32 || primaryCode >= 65 && primaryCode <= 90 || primaryCode >= 97 && primaryCode <= 122;
+    }
+
+    /**
+     * 切换到系统键盘
+     */
+    private void switchToSystemKeyboard() {
+        if (null != mEditText) {
+            //先隐藏当前键盘
+            if (null != mKeyboardDialog && mKeyboardDialog.isShowing()) {
+                mKeyboardDialog.dismiss();
+            }
+            //弹出系统键盘
+            KeyboardTools.showSoftInput(mEditText);
+        }
     }
 
     private LayoutInflater getInflater() {

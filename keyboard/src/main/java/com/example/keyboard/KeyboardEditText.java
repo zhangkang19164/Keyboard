@@ -1,6 +1,7 @@
 package com.example.keyboard;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
@@ -19,6 +20,7 @@ import com.example.keyboard.delegate.KeyboardDelegate;
  */
 public class KeyboardEditText extends AppCompatEditText {
     private KeyboardDelegate mKeyboardDelegate;
+    private int mKeyboardType;
 
     public KeyboardEditText(Context context) {
         this(context, null);
@@ -30,6 +32,9 @@ public class KeyboardEditText extends AppCompatEditText {
 
     public KeyboardEditText(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.KeyboardEditText);
+        mKeyboardType = typedArray.getInteger(R.styleable.KeyboardEditText_keyboardType, -1);
+        typedArray.recycle();
         mKeyboardDelegate = KeyboardDelegate.create(this, attrs);
     }
 
@@ -79,6 +84,10 @@ public class KeyboardEditText extends AppCompatEditText {
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
         mKeyboardDelegate.onDetachedFromWindow();
+    }
+
+    public int getKeyboardType() {
+        return mKeyboardType;
     }
 
     public void showKeyboard() {

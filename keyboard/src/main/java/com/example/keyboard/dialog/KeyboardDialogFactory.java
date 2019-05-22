@@ -2,7 +2,8 @@ package com.example.keyboard.dialog;
 
 import android.content.Context;
 import android.content.ContextWrapper;
-import android.widget.EditText;
+
+import com.example.keyboard.KeyboardEditText;
 
 /**
  * Created on 2018/8/22
@@ -17,10 +18,11 @@ public class KeyboardDialogFactory {
 
     /**
      * 创建弹框 会根据不同的
+     *
      * @param editText 输入框
      * @return
      */
-    public static KeyboardDialog create(EditText editText) {
+    public static KeyboardDialog create(KeyboardEditText editText) {
         if (null == sKeyboardDialog) {
             sKeyboardDialog = create(editText.getContext());
         } else {

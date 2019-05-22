@@ -1,12 +1,15 @@
 package com.example.keyboard.delegate;
 
+import android.content.res.TypedArray;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.widget.EditText;
 
+import com.example.keyboard.KeyboardEditText;
 import com.example.keyboard.KeyboardTools;
+import com.example.keyboard.R;
 import com.example.keyboard.dialog.KeyboardDialog;
 import com.example.keyboard.dialog.KeyboardDialogFactory;
 
@@ -22,17 +25,18 @@ import java.lang.reflect.Method;
  */
 public class KeyboardDelegate {
     private boolean mShowSystemSoftInput;
-    protected EditText mEditText;
+    protected KeyboardEditText mEditText;
     protected KeyboardDialog mKeyboardDialog;
 
-    public static KeyboardDelegate create(EditText editText, AttributeSet attrs) {
+
+    public static KeyboardDelegate create(KeyboardEditText editText, AttributeSet attrs) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return new KeyboardDelegateImplV21(editText, attrs);
         }
         return new KeyboardDelegate(editText, attrs);
     }
 
-    public KeyboardDelegate(EditText editText, AttributeSet attrs) {
+    public KeyboardDelegate(KeyboardEditText editText, AttributeSet attrs) {
         mEditText = editText;
         showSystemSoftInput(false);
     }

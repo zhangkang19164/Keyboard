@@ -29,6 +29,10 @@ public class KeyboardKeys {
      * 大写英文键盘
      */
     public static final String KEYBOARD_ENGLISH_CAPITALIZED = "CapitalizedEnglishKeyboard";
+    /**
+     * 可以切换到系统键盘的键盘
+     */
+    public static final String KEYBOARD_SWITCH_TO_SYSTEM = "switchToSystemKeyboard";
 
     /**
      * 清除
@@ -54,4 +58,13 @@ public class KeyboardKeys {
      * 切换到英文键盘
      */
     public static final int KEYCODE_SWITCH_TO_ENGLISH = -12;
+    /**
+     * 切换到系统键盘
+     */
+    public static final int KEYCODE_SWITCH_TO_SYSTEM = -13;
+
+    /**
+     * 键盘类型
+     */
+    public static final int KEYBOARD_TYPE_SWITCH_TO_SYSTEM = 0x00100000;
 }

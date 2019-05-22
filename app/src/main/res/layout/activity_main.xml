@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,6 +15,13 @@
         android:paddingLeft="15dp"
         android:paddingRight="15dp" />
 
+    <com.example.keyboard.KeyboardEditText
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="切换到系统键盘"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        app:keyboardType="switchToSystem" />
 
     <com.example.keyboard.KeyboardEditText
         android:layout_width="match_parent"

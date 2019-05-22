@@ -4,6 +4,7 @@ import android.content.Context;
 import android.inputmethodservice.Keyboard;
 import android.text.InputType;
 
+import com.example.keyboard.KeyboardEditText;
 import com.example.keyboard.R;
 
 /**
@@ -36,29 +37,29 @@ public class KeyboardFactory {
      */
     private static Keyboard sCapitalizedEnglishKeyboard;
 
-    public static String getKeyboardType(int inputType) {
-        String keyboardType;
-        switch (inputType) {
+    private static Keyboard sSwitchToSystemKeyboard;
+
+    public static String getKeyboardType(KeyboardEditText editText) {
+        int keyboardType = editText.getKeyboardType();
+        if (keyboardType == KeyboardKeys.KEYBOARD_TYPE_SWITCH_TO_SYSTEM) {
+            return KeyboardKeys.KEYBOARD_SWITCH_TO_SYSTEM;
+        }
+        switch (editText.getInputType()) {
             case InputType.TYPE_CLASS_NUMBER:
             case InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_SIGNED:
             case InputType.TYPE_CLASS_PHONE:
-                keyboardType = KeyboardKeys.KEYBOARD_NUMBER;
-                break;
+                return KeyboardKeys.KEYBOARD_NUMBER;
             case InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL:
-                keyboardType = KeyboardKeys.KEYBOARD_NUMBER_DECIMAL;
-                break;
+                return KeyboardKeys.KEYBOARD_NUMBER_DECIMAL;
             case InputType.TYPE_CLASS_TEXT:
-                keyboardType = KeyboardKeys.KEYBOARD_ENGLISH_LOWERCASE;
-                break;
+                return KeyboardKeys.KEYBOARD_ENGLISH_LOWERCASE;
             default:
-                keyboardType = KeyboardKeys.KEYBOARD_ENGLISH_LOWERCASE;
-                break;
+                return KeyboardKeys.KEYBOARD_ENGLISH_LOWERCASE;
         }
-        return keyboardType;
     }
 
-    public static Keyboard getKeyboard(Context context, int inputType) {
-        return getKeyboard(context, getKeyboardType(inputType));
+    public static Keyboard getKeyboard(KeyboardEditText editText) {
+        return getKeyboard(editText.getContext(), getKeyboardType(editText));
     }
 
     public static Keyboard getKeyboard(Context context, @KeyboardType String keyboardType) {
@@ -83,6 +84,11 @@ public class KeyboardFactory {
                     sCapitalizedEnglishKeyboard = new Keyboard(context, R.xml.keyboard_english_capitalized);
                 }
                 return sCapitalizedEnglishKeyboard;
+            case KeyboardKeys.KEYBOARD_SWITCH_TO_SYSTEM:
+                if (null == sSwitchToSystemKeyboard) {
+                    sSwitchToSystemKeyboard = new Keyboard(context, R.xml.keyboard_number_switch_to_system);
+                }
+                return sSwitchToSystemKeyboard;
             case KeyboardKeys.KEYBOARD_ENGLISH_LOWERCASE:
             default:
                 if (null == sLowercaseEnglishKeyboard) {

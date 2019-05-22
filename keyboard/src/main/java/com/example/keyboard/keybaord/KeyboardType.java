@@ -12,6 +12,6 @@ import android.support.annotation.StringDef;
  */
 @StringDef({KeyboardKeys.KEYBOARD_NUMBER, KeyboardKeys.KEYBOARD_NUMBER_ALL,
         KeyboardKeys.KEYBOARD_NUMBER_DECIMAL, KeyboardKeys.KEYBOARD_ENGLISH_LOWERCASE,
-        KeyboardKeys.KEYBOARD_ENGLISH_CAPITALIZED})
+        KeyboardKeys.KEYBOARD_ENGLISH_CAPITALIZED, KeyboardKeys.KEYBOARD_SWITCH_TO_SYSTEM})
 public @interface KeyboardType {
 }

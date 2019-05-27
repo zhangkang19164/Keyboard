@@ -1,6 +1,5 @@
 package com.example.keyboard.delegate;
 
-import android.content.res.TypedArray;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
@@ -9,7 +8,6 @@ import android.widget.EditText;
 
 import com.example.keyboard.KeyboardEditText;
 import com.example.keyboard.KeyboardTools;
-import com.example.keyboard.R;
 import com.example.keyboard.dialog.KeyboardDialog;
 import com.example.keyboard.dialog.KeyboardDialogFactory;
 

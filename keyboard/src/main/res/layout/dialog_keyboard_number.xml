@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.inputmethodservice.KeyboardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.keyboard.base.CopyKeyboardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@id/keyboard_number"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/_ABB2BD"
-    android:keyBackground="@drawable/key_number_bg"
-    android:keyPreviewLayout="@null"
-    android:keyTextColor="@android:color/black"
-    android:keyTextSize="24sp"
-    android:labelTextSize="19sp"
-    android:paddingBottom="0.5dp"
     android:paddingTop="0.5dp"
-    android:shadowRadius="0" />
+    android:paddingBottom="0.5dp"
+    app:keyBackground="@drawable/key_number_bg"
+    app:keyPreviewLayout="@null"
+    app:keyTextColor="@android:color/black"
+    app:keyTextSize="24sp"
+    app:labelTextSize="19sp"
+    app:shadowRadius="0" />
 

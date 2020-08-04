@@ -36,6 +36,7 @@ public class KeyboardEditText extends AppCompatEditText {
         mKeyboardType = typedArray.getInteger(R.styleable.KeyboardEditText_keyboardType, -1);
         typedArray.recycle();
         mKeyboardDelegate = KeyboardDelegate.create(this, attrs);
+
     }
 
     @Override

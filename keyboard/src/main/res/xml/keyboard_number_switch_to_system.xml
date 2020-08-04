@@ -1,70 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
-    android:horizontalGap="0.5dp"
-    android:keyWidth="24.925%p"
-    android:keyHeight="53.75dp"
-    android:verticalGap="0.5dp">
+<Keyboard xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:horizontalGap="0.5dp"
+    app:keyHeight="53.75dp"
+    app:keyWidth="24.925%p"
+    app:verticalGap="0.5dp">
 
     <Row>
         <Key
-            android:codes="49"
-            android:keyLabel="1" />
+            app:codes="49"
+            app:keyLabel="1" />
         <Key
-            android:codes="50"
-            android:keyLabel="2" />
+            app:codes="50"
+            app:keyLabel="2" />
         <Key
-            android:codes="51"
-            android:keyLabel="3" />
+            app:codes="51"
+            app:keyLabel="3" />
         <Key
-            android:codes="-5"
-            android:isRepeatable="true"
-            android:keyIcon="@drawable/ic_backspace_black_24dp" />
+            app:codes="-5"
+            app:isRepeatable="true"
+            app:keyIcon="@drawable/ic_backspace_black_24dp" />
     </Row>
 
     <Row>
         <Key
-            android:codes="52"
-            android:keyLabel="4" />
+            app:codes="52"
+            app:keyLabel="4" />
         <Key
-            android:codes="53"
-            android:keyLabel="5" />
+            app:codes="53"
+            app:keyLabel="5" />
         <Key
-            android:codes="54"
-            android:keyLabel="6" />
+            app:codes="54"
+            app:keyLabel="6" />
         <Key
-            android:codes="-7"
-            android:keyIcon="@drawable/ic_clear_all_black_24dp" />
+            app:codes="-7"
+            app:keyIcon="@drawable/ic_clear_all_black_24dp" />
     </Row>
 
     <Row>
         <Key
-            android:codes="55"
-            android:keyLabel="7" />
+            app:codes="55"
+            app:keyLabel="7" />
         <Key
-            android:codes="56"
-            android:keyLabel="8" />
+            app:codes="56"
+            app:keyLabel="8" />
         <Key
-            android:codes="57"
-            android:keyLabel="9" />
+            app:codes="57"
+            app:keyLabel="9" />
         <Key
-            android:codes="-8"
-            android:keyIcon="@drawable/ic_keyboard_hide_black_24dp" />
+            app:codes="-8"
+            app:keyIcon="@drawable/ic_keyboard_hide_black_24dp" />
     </Row>
 
     <Row>
         <Key
-            android:codes="-13"
-            android:keyIcon="@drawable/ic_swap_vert_black_24dp" />
+            app:codes="-13"
+            app:keyIcon="@drawable/ic_swap_vert_black_24dp" />
         <Key
-            android:codes="48"
-            android:keyLabel="0" />
+            app:codes="48"
+            app:keyLabel="0" />
 
         <Key
-            android:codes="0"
-            android:keyLabel="" />
+            app:codes="0"
+            app:keyLabel="" />
         <Key
-            android:codes="-4"
-            android:keyIcon="@drawable/ic_keyboard_return_black_24dp" />
+            app:codes="-4"
+            app:keyIcon="@drawable/ic_keyboard_return_black_24dp" />
     </Row>
 
 </Keyboard>

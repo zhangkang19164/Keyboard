@@ -6,6 +6,8 @@ import android.content.res.XmlResourceParser;
 import android.graphics.Canvas;
 import android.inputmethodservice.Keyboard;
 
+import com.example.keyboard.base.CopyKeyboard;
+
 /**
  * Created on 2019/6/18
  * Title: 多背景键盘
@@ -13,7 +15,7 @@ import android.inputmethodservice.Keyboard;
  *
  * @author Android-张康
  */
-public class MultiBackgroundKeyboard extends Keyboard {
+public class MultiBackgroundKeyboard extends CopyKeyboard {
     MultiBackgroundKeyboard(Context context, int xmlLayoutResId) {
         super(context, xmlLayoutResId, 0);
     }
@@ -151,7 +153,7 @@ public class MultiBackgroundKeyboard extends Keyboard {
         private boolean isNeedChange() {
             if (null != codes) {
                 for (int code : codes) {
-                    if (code == Keyboard.KEYCODE_DONE) {
+                    if (code == CopyKeyboard.KEYCODE_DONE) {
                         return true;
                     }
                 }
@@ -162,7 +164,7 @@ public class MultiBackgroundKeyboard extends Keyboard {
         private boolean isNeedChange2() {
             if (null != codes) {
                 for (int code : codes) {
-                    if (code == Keyboard.KEYCODE_DELETE ||
+                    if (code == CopyKeyboard.KEYCODE_DELETE ||
                             code == KeyboardKeys.KEYCODE_CLEAR ||
                             code == KeyboardKeys.KEYCODE_HIDE) {
                         return true;

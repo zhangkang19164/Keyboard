@@ -1,11 +1,11 @@
 package com.example.keyboard.keybaord;
 
 import android.content.Context;
-import android.inputmethodservice.Keyboard;
 import android.text.InputType;
 
 import com.example.keyboard.KeyboardEditText;
 import com.example.keyboard.R;
+import com.example.keyboard.base.CopyKeyboard;
 
 /**
  * Created on 2018/8/21
@@ -19,25 +19,25 @@ public class KeyboardFactory {
     /**
      * 数字键盘
      */
-    private static Keyboard sNumberKeyboard;
+    private static CopyKeyboard sNumberKeyboard;
     /**
      * 数字全键盘
      */
-    private static Keyboard sNumberAllKeyboard;
+    private static CopyKeyboard sNumberAllKeyboard;
     /**
      * 带小数点的键盘
      */
-    private static Keyboard sNumberDecimalKeyboard;
+    private static CopyKeyboard sNumberDecimalKeyboard;
     /**
      * 小写英文键盘
      */
-    private static Keyboard sLowercaseEnglishKeyboard;
+    private static CopyKeyboard sLowercaseEnglishKeyboard;
     /**
      * 大写英文键盘
      */
-    private static Keyboard sCapitalizedEnglishKeyboard;
+    private static CopyKeyboard sCapitalizedEnglishKeyboard;
 
-    private static Keyboard sSwitchToSystemKeyboard;
+    private static CopyKeyboard sSwitchToSystemKeyboard;
 
     public static String getKeyboardType(KeyboardEditText editText) {
         int keyboardType = editText.getKeyboardType();
@@ -58,11 +58,11 @@ public class KeyboardFactory {
         }
     }
 
-    public static Keyboard getKeyboard(KeyboardEditText editText) {
+    public static CopyKeyboard getKeyboard(KeyboardEditText editText) {
         return getKeyboard(editText.getContext(), getKeyboardType(editText));
     }
 
-    public static Keyboard getKeyboard(Context context, @KeyboardType String keyboardType) {
+    public static CopyKeyboard getKeyboard(Context context, @KeyboardType String keyboardType) {
         switch (keyboardType) {
             case KeyboardKeys.KEYBOARD_NUMBER:
                 if (null == sNumberKeyboard) {

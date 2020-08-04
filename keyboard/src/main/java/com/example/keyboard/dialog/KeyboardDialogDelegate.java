@@ -2,8 +2,6 @@ package com.example.keyboard.dialog;
 
 import android.content.Context;
 import android.graphics.Rect;
-import android.inputmethodservice.Keyboard;
-import android.inputmethodservice.KeyboardView;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,6 +16,8 @@ import android.view.Window;
 import com.example.keyboard.KeyboardEditText;
 import com.example.keyboard.KeyboardTools;
 import com.example.keyboard.R;
+import com.example.keyboard.base.CopyKeyboard;
+import com.example.keyboard.base.CopyKeyboardView;
 import com.example.keyboard.keybaord.KeyboardFactory;
 import com.example.keyboard.keybaord.KeyboardKeys;
 
@@ -32,12 +32,12 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
  * @author Android-张康
  * update 2018/8/22
  */
-public class KeyboardDialogDelegate implements KeyboardView.OnKeyboardActionListener {
+public class KeyboardDialogDelegate implements CopyKeyboardView.OnKeyboardActionListener {
     private final Rect mBounds = new Rect();
     private LayoutInflater mInflater;
     private KeyboardDialog mKeyboardDialog;
-    private KeyboardView mNumberKeyboardView;
-    private KeyboardView mEnglishKeyboardView;
+    private CopyKeyboardView mNumberKeyboardView;
+    private CopyKeyboardView mEnglishKeyboardView;
     private String mLastEnglishKeyboardType;
     private String mLastKeyboardType;
     private KeyboardEditText mEditText;
@@ -75,10 +75,10 @@ public class KeyboardDialogDelegate implements KeyboardView.OnKeyboardActionList
             }
         }
         switch (primaryCode) {
-            case Keyboard.KEYCODE_DONE:
+            case CopyKeyboard.KEYCODE_DONE:
                 mKeyboardDialog.dismiss();
                 break;
-            case Keyboard.KEYCODE_DELETE:
+            case CopyKeyboard.KEYCODE_DELETE:
                 mEditText.getEditableText().delete(selectionStart, selectionEnd);
                 break;
             case KeyboardKeys.KEYCODE_CLEAR:
@@ -186,10 +186,10 @@ public class KeyboardDialogDelegate implements KeyboardView.OnKeyboardActionList
         }
         mLastKeyboardType = keyboardType;
         if (isNumberKeyboard(keyboardType)) {
-            KeyboardView keyboardView = mKeyboardDialog.findViewById(R.id.keyboard_number);
+            CopyKeyboardView keyboardView = mKeyboardDialog.findViewById(R.id.keyboard_number);
             if (null == keyboardView) {
                 if (null == mNumberKeyboardView) {
-                    mNumberKeyboardView = (KeyboardView) getInflater().inflate(R.layout.dialog_keyboard_number, null);
+                    mNumberKeyboardView = (CopyKeyboardView) getInflater().inflate(R.layout.dialog_keyboard_number, null);
                     mNumberKeyboardView.setOnKeyboardActionListener(this);
                 }
                 keyboardView = mNumberKeyboardView;
@@ -209,10 +209,10 @@ public class KeyboardDialogDelegate implements KeyboardView.OnKeyboardActionList
             keyboardView.setTag(keyboardType);
             keyboardView.setKeyboard(KeyboardFactory.getKeyboard(keyboardView.getContext(), keyboardType));
         } else {
-            KeyboardView keyboardView = mKeyboardDialog.findViewById(R.id.keyboard_english);
+            CopyKeyboardView keyboardView = mKeyboardDialog.findViewById(R.id.keyboard_english);
             if (null == keyboardView) {
                 if (null == mEnglishKeyboardView) {
-                    mEnglishKeyboardView = (KeyboardView) getInflater().inflate(R.layout.dialog_keyboard_english, null);
+                    mEnglishKeyboardView = (CopyKeyboardView) getInflater().inflate(R.layout.dialog_keyboard_english, null);
                     mEnglishKeyboardView.setOnKeyboardActionListener(this);
                 }
                 keyboardView = mEnglishKeyboardView;

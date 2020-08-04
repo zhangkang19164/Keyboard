@@ -127,6 +127,7 @@
             app:keyWidth="48.533%p" />
         <Key
             app:codes="-4"
+            app:keyBackground="@drawable/key_english_enter_bg"
             app:keyEdgeFlags="right"
             app:keyIcon="@drawable/ic_keyboard_return_black_24dp"
             app:keyWidth="23.466%p" />

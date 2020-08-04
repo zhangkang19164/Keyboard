@@ -682,7 +682,7 @@ public class CopyKeyboardView extends View implements View.OnClickListener {
         canvas.clipRect(mDirtyRect);
 
         final Paint paint = mPaint;
-        final Drawable keyBackground = mKeyBackground;
+
         final Rect clipRegion = mClipRegion;
         final Rect padding = mPadding;
         final int kbdPaddingLeft = getPaddingLeft();
@@ -708,6 +708,7 @@ public class CopyKeyboardView extends View implements View.OnClickListener {
             if (drawSingleKey && invalidKey != key) {
                 continue;
             }
+            final Drawable keyBackground = null == key.keyBackground ? mKeyBackground : key.keyBackground;
             int[] drawableState = key.getCurrentDrawableState();
             keyBackground.setState(drawableState);
 
@@ -726,11 +727,10 @@ public class CopyKeyboardView extends View implements View.OnClickListener {
                 // For characters, use large font. For labels like "Done", use small font.
                 if (label.length() > 1 && key.codes.length < 2) {
                     paint.setTextSize(mLabelTextSize);
-                    paint.setTypeface(Typeface.DEFAULT_BOLD);
                 } else {
                     paint.setTextSize(mKeyTextSize);
-                    paint.setTypeface(Typeface.DEFAULT);
                 }
+                paint.setTypeface(Typeface.DEFAULT);
                 // Draw a drop shadow for the text
                 paint.setShadowLayer(mShadowRadius, 0, 0, mShadowColor);
                 // Draw the text

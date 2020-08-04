@@ -66,33 +66,33 @@ public class KeyboardFactory {
         switch (keyboardType) {
             case KeyboardKeys.KEYBOARD_NUMBER:
                 if (null == sNumberKeyboard) {
-                    sNumberKeyboard = new MultiBackgroundKeyboard(context, R.xml.keyboard_number);
+                    sNumberKeyboard = new CopyKeyboard(context, R.xml.keyboard_number);
                 }
                 return sNumberKeyboard;
             case KeyboardKeys.KEYBOARD_NUMBER_ALL:
                 if (null == sNumberAllKeyboard) {
-                    sNumberAllKeyboard = new MultiBackgroundKeyboard(context, R.xml.keyboard_number_all);
+                    sNumberAllKeyboard = new CopyKeyboard(context, R.xml.keyboard_number_all);
                 }
                 return sNumberAllKeyboard;
             case KeyboardKeys.KEYBOARD_NUMBER_DECIMAL:
                 if (null == sNumberDecimalKeyboard) {
-                    sNumberDecimalKeyboard = new MultiBackgroundKeyboard(context, R.xml.keyboard_number_decimal);
+                    sNumberDecimalKeyboard = new CopyKeyboard(context, R.xml.keyboard_number_decimal);
                 }
                 return sNumberDecimalKeyboard;
             case KeyboardKeys.KEYBOARD_ENGLISH_CAPITALIZED:
                 if (null == sCapitalizedEnglishKeyboard) {
-                    sCapitalizedEnglishKeyboard = new MultiBackgroundKeyboard(context, R.xml.keyboard_english_capitalized);
+                    sCapitalizedEnglishKeyboard = new CopyKeyboard(context, R.xml.keyboard_english_capitalized);
                 }
                 return sCapitalizedEnglishKeyboard;
             case KeyboardKeys.KEYBOARD_SWITCH_TO_SYSTEM:
                 if (null == sSwitchToSystemKeyboard) {
-                    sSwitchToSystemKeyboard = new MultiBackgroundKeyboard(context, R.xml.keyboard_number_switch_to_system);
+                    sSwitchToSystemKeyboard = new CopyKeyboard(context, R.xml.keyboard_number_switch_to_system);
                 }
                 return sSwitchToSystemKeyboard;
             case KeyboardKeys.KEYBOARD_ENGLISH_LOWERCASE:
             default:
                 if (null == sLowercaseEnglishKeyboard) {
-                    sLowercaseEnglishKeyboard = new MultiBackgroundKeyboard(context, R.xml.keyboard_english_lowercase);
+                    sLowercaseEnglishKeyboard = new CopyKeyboard(context, R.xml.keyboard_english_lowercase);
                 }
                 return sLowercaseEnglishKeyboard;
         }

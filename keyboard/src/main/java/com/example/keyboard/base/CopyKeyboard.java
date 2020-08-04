@@ -297,6 +297,10 @@ public class CopyKeyboard {
          */
         public Drawable iconPreview;
         /**
+         * 按钮的单独背景
+         */
+        public Drawable keyBackground;
+        /**
          * Width of the key, not including the gap
          */
         public int width;
@@ -448,6 +452,11 @@ public class CopyKeyboard {
             if (iconPreview != null) {
                 iconPreview.setBounds(0, 0, iconPreview.getIntrinsicWidth(),
                         iconPreview.getIntrinsicHeight());
+            }
+
+            keyBackground = a.getDrawable(R.styleable.CopyKeyboard_Key_keyBackground);
+            if (null != keyBackground) {
+                keyBackground.setBounds(0, 0, width, height);
             }
             popupCharacters = a.getText(
                     R.styleable.CopyKeyboard_Key_popupCharacters);

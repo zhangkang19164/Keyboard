@@ -18,7 +18,7 @@
 
 #### 效果图
 
-![默认键盘](https://github.com/wogaizenme/Keyboard/blob/master/images/default.png)
+![默认键盘](https://github.com/zhangkang19164/Keyboard/tree/master/images/default.png)
 ### 纯数字键盘
 
 #### 代码
@@ -35,7 +35,7 @@
 
 #### 效果图
 
-![数字键盘](https://github.com/wogaizenme/Keyboard/blob/master/images/number.png)
+![数字键盘](https://github.com/zhangkang19164/Keyboard/tree/master/images/number.png)
 
 ### 小数点键盘
 
@@ -55,4 +55,4 @@
 
 
 
-![小数点键盘](https://github.com/wogaizenme/Keyboard/blob/master/images/numberDecimal.png)
+![小数点键盘](https://github.com/zhangkang19164/Keyboard/tree/master/images/numberDecimal.png)

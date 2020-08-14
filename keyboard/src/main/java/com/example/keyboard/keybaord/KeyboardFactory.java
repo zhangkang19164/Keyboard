@@ -5,7 +5,8 @@ import android.text.InputType;
 
 import com.example.keyboard.KeyboardEditText;
 import com.example.keyboard.R;
-import com.example.keyboard.base.CopyKeyboard;
+
+import self.zhangkang.android.copykeyboard.CopyKeyboard;
 
 /**
  * Created on 2018/8/21

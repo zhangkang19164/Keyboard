@@ -1,1 +1,2 @@
+include ':copykeyboard'
 include ':app', ':keyboard'

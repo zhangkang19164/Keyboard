@@ -57,7 +57,8 @@
             app:keyLabel="" />
         <Key
             app:codes="48"
-            app:keyLabel="0" />
+            app:keyLabel="0"
+            app:keyTextColor="@android:color/holo_blue_light" />
 
         <Key
             app:codes="0"

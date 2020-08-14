@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.example.keyboard.base;
+package self.zhangkang.android.copykeyboard;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -41,8 +41,6 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.accessibility.AccessibilityEvent;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-
-import com.example.keyboard.R;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -131,7 +129,7 @@ public class CopyKeyboardView extends View implements View.OnClickListener {
     private static final boolean DEBUG = false;
     private static final int NOT_A_KEY = -1;
     private static final int[] KEY_DELETE = {CopyKeyboard.KEYCODE_DELETE};
-    private static final int[] LONG_PRESSABLE_STATE_SET = {android.R.attr.state_long_pressable};
+    private static final int[] LONG_PRESSABLE_STATE_SET = {R.attr.state_long_pressable};
 
     private CopyKeyboard mCopyKeyboard;
     private int mCurrentKeyIndex = NOT_A_KEY;
@@ -690,7 +688,7 @@ public class CopyKeyboardView extends View implements View.OnClickListener {
         final CopyKeyboard.Key[] keys = mKeys;
         final CopyKeyboard.Key invalidKey = mInvalidatedKey;
 
-        paint.setColor(mKeyTextColor);
+
         boolean drawSingleKey = false;
         if (invalidKey != null && canvas.getClipBounds(clipRegion)) {
             // Is clipRegion completely contained within the invalidated key?
@@ -708,7 +706,10 @@ public class CopyKeyboardView extends View implements View.OnClickListener {
             if (drawSingleKey && invalidKey != key) {
                 continue;
             }
+            //获取背景，如果没有设置单独的背景，则使用公共的背景
             final Drawable keyBackground = null == key.keyBackground ? mKeyBackground : key.keyBackground;
+            //设置字体颜色，如果没有单独设置字体颜色，则使用公共的字体的颜色
+            paint.setColor(-1 == key.keyTextColor ? mKeyTextColor : key.keyTextColor);
             int[] drawableState = key.getCurrentDrawableState();
             keyBackground.setState(drawableState);
 

@@ -1,0 +1,9 @@
+<resources>
+    <string name="keyboardview_keycode_alt">"Alt"</string>
+    <string name="keyboardview_keycode_cancel">"取消"</string>
+    <string name="keyboardview_keycode_delete">"Delete"</string>
+    <string name="keyboardview_keycode_done">"完成"</string>
+    <string name="keyboardview_keycode_mode_change">"模式更改"</string>
+    <string name="keyboardview_keycode_shift">"Shift"</string>
+    <string name="keyboardview_keycode_enter">"Enter"</string>
+</resources>

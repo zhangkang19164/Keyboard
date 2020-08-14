@@ -16,10 +16,11 @@ import android.view.Window;
 import com.example.keyboard.KeyboardEditText;
 import com.example.keyboard.KeyboardTools;
 import com.example.keyboard.R;
-import com.example.keyboard.base.CopyKeyboard;
-import com.example.keyboard.base.CopyKeyboardView;
 import com.example.keyboard.keybaord.KeyboardFactory;
 import com.example.keyboard.keybaord.KeyboardKeys;
+
+import self.zhangkang.android.copykeyboard.CopyKeyboard;
+import self.zhangkang.android.copykeyboard.CopyKeyboardView;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -193,7 +194,7 @@ public class KeyboardDialogDelegate implements CopyKeyboardView.OnKeyboardAction
                     mNumberKeyboardView.setOnKeyboardActionListener(this);
                 }
                 keyboardView = mNumberKeyboardView;
-                mKeyboardDialog.addContentView(keyboardView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                mKeyboardDialog.setContentView(keyboardView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             }
             View viewById = mKeyboardDialog.findViewById(R.id.keyboard_english);
             if (null != viewById && viewById.getVisibility() != View.GONE) {
@@ -282,13 +283,29 @@ public class KeyboardDialogDelegate implements CopyKeyboardView.OnKeyboardAction
      * 切换到系统键盘
      */
     private void switchToSystemKeyboard() {
-        if (null != mEditText) {
+        KeyboardEditText editText = mEditText;
+        if (null != editText) {
             //先隐藏当前键盘
             if (null != mKeyboardDialog && mKeyboardDialog.isShowing()) {
                 mKeyboardDialog.dismiss();
             }
             //弹出系统键盘
-            KeyboardTools.showSoftInput(mEditText);
+            KeyboardTools.showSoftInput(editText);
+        }
+    }
+
+    private void switchToKeyboard() {
+        final KeyboardEditText editText = mEditText;
+        if (null != editText) {
+            //先隐藏系统键盘
+            KeyboardTools.hideSoftInputFromWindow(editText);
+            //延迟一下，展示当前的键盘
+            editText.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    editText.showKeyboard();
+                }
+            }, 100);
         }
     }
 

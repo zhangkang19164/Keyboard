@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.example.keyboard.base;
+package self.zhangkang.android.copykeyboard;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -27,8 +27,6 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
 import android.util.Xml;
-
-import com.example.keyboard.R;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -255,6 +253,7 @@ public class CopyKeyboard {
             rowEdgeFlags = a.getInt(R.styleable.CopyKeyboard_Row_rowEdgeFlags, 0);
             mode = a.getResourceId(R.styleable.CopyKeyboard_Row_keyboardMode,
                     0);
+            a.recycle();
         }
     }
 
@@ -300,6 +299,10 @@ public class CopyKeyboard {
          * 按钮的单独背景
          */
         public Drawable keyBackground;
+        /**
+         * 按钮的单独字体颜色
+         */
+        public int keyTextColor;
         /**
          * Width of the key, not including the gap
          */
@@ -458,6 +461,8 @@ public class CopyKeyboard {
             if (null != keyBackground) {
                 keyBackground.setBounds(0, 0, width, height);
             }
+            keyTextColor = a.getColor(R.styleable.CopyKeyboard_Key_keyTextColor, -1);
+
             popupCharacters = a.getText(
                     R.styleable.CopyKeyboard_Key_popupCharacters);
             popupResId = a.getResourceId(

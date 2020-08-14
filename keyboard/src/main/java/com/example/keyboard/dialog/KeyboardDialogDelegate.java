@@ -69,17 +69,17 @@ public class KeyboardDialogDelegate implements CopyKeyboardView.OnKeyboardAction
         }
         int selectionStart = mEditText.getSelectionStart();
         int selectionEnd = mEditText.getSelectionEnd();
-        if (selectionStart == selectionEnd) {
-            selectionStart = selectionEnd - 1;
-            if (selectionStart < 0) {
-                selectionStart = 0;
-            }
-        }
         switch (primaryCode) {
             case CopyKeyboard.KEYCODE_DONE:
                 mKeyboardDialog.dismiss();
                 break;
             case CopyKeyboard.KEYCODE_DELETE:
+                if (selectionStart == selectionEnd) {
+                    selectionStart = selectionEnd - 1;
+                    if (selectionStart < 0) {
+                        selectionStart = 0;
+                    }
+                }
                 mEditText.getEditableText().delete(selectionStart, selectionEnd);
                 break;
             case KeyboardKeys.KEYCODE_CLEAR:
@@ -116,9 +116,17 @@ public class KeyboardDialogDelegate implements CopyKeyboardView.OnKeyboardAction
                 break;
             default:
                 if (isNumber(primaryCode)) {
-                    mEditText.getEditableText().insert(selectionEnd, String.valueOf((char) primaryCode));
+                    if (selectionStart != selectionEnd) {
+                        mEditText.getEditableText().replace(selectionStart, selectionEnd, String.valueOf((char) primaryCode));
+                    } else {
+                        mEditText.getEditableText().insert(selectionEnd, String.valueOf((char) primaryCode));
+                    }
                 } else if (isEnglishAlphabet(primaryCode)) {
-                    mEditText.getEditableText().insert(selectionEnd, String.valueOf((char) primaryCode));
+                    if (selectionStart != selectionEnd) {
+                        mEditText.getEditableText().replace(selectionStart, selectionEnd, String.valueOf((char) primaryCode));
+                    } else {
+                        mEditText.getEditableText().insert(selectionEnd, String.valueOf((char) primaryCode));
+                    }
                 }
                 break;
         }
@@ -126,7 +134,13 @@ public class KeyboardDialogDelegate implements CopyKeyboardView.OnKeyboardAction
 
     @Override
     public void onText(CharSequence text) {
-
+        int selectionStart = mEditText.getSelectionStart();
+        int selectionEnd = mEditText.getSelectionEnd();
+        if (selectionStart != selectionEnd) {
+            mEditText.getEditableText().replace(selectionStart, selectionEnd, text);
+        } else {
+            mEditText.getEditableText().insert(selectionEnd, text);
+        }
     }
 
     @Override
@@ -160,18 +174,16 @@ public class KeyboardDialogDelegate implements CopyKeyboardView.OnKeyboardAction
     }
 
     public void focusIn(@NonNull KeyboardEditText editText) {
-        if (null != mEditText && mEditText == editText) {
-            return;
+        if (null == mEditText || mEditText != editText) {
+            mEditText = editText;
+            setKeyboard(KeyboardFactory.getKeyboardType(mEditText));
         }
-        mEditText = editText;
-        setKeyboard(KeyboardFactory.getKeyboardType(mEditText));
     }
 
     public void focusOut(@NonNull KeyboardEditText editText) {
         if (mEditText == editText) {
             mEditText = null;
         }
-
     }
 
     private void initView() {
@@ -194,7 +206,7 @@ public class KeyboardDialogDelegate implements CopyKeyboardView.OnKeyboardAction
                     mNumberKeyboardView.setOnKeyboardActionListener(this);
                 }
                 keyboardView = mNumberKeyboardView;
-                mKeyboardDialog.setContentView(keyboardView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                mKeyboardDialog.addContentView(keyboardView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             }
             View viewById = mKeyboardDialog.findViewById(R.id.keyboard_english);
             if (null != viewById && viewById.getVisibility() != View.GONE) {
@@ -245,6 +257,12 @@ public class KeyboardDialogDelegate implements CopyKeyboardView.OnKeyboardAction
     }
 
 
+    /**
+     * 判断是否为数字键盘
+     *
+     * @param keyboardType 键盘类型
+     * @return 如果是数字键盘，返回true
+     */
     private boolean isNumberKeyboard(String keyboardType) {
         return KeyboardKeys.KEYBOARD_NUMBER.equals(keyboardType) ||
                 KeyboardKeys.KEYBOARD_NUMBER_ALL.equals(keyboardType) ||
@@ -252,6 +270,12 @@ public class KeyboardDialogDelegate implements CopyKeyboardView.OnKeyboardAction
                 KeyboardKeys.KEYBOARD_SWITCH_TO_SYSTEM.equals(keyboardType);
     }
 
+    /**
+     * 判断是否为字母键盘
+     *
+     * @param keyboardType 键盘类型
+     * @return 如果是字母键盘，返回true
+     */
     private boolean isEnglishKeyboard(String keyboardType) {
         return KeyboardKeys.KEYBOARD_ENGLISH_LOWERCASE.equals(keyboardType) ||
                 KeyboardKeys.KEYBOARD_ENGLISH_CAPITALIZED.equals(keyboardType);
